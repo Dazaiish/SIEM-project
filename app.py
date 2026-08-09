@@ -3,10 +3,10 @@ import pandas as pd
 from streamlit_gsheets import GSheetsConnection
 import time
 
-st.set_page_config(page_title="Project Aegis SOC Dashboard", page_icon="🛡️", layout="wide")
+st.set_page_config(page_title="SIEM Center", layout="wide")
 
-st.title("🛡️ Project Aegis: Security Operations Center")
-st.write("Monitoring ancaman real-time (Cloud Database Integration).")
+st.title("SIEM Center")
+st.write("Monitoring ancaman real-time.")
 st.divider()
 
 st.sidebar.header("Konfigurasi")
