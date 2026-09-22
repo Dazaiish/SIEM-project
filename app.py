@@ -45,6 +45,20 @@ if not data.empty and 'IP' in data.columns:
     with right_col:
         st.subheader("🌍 Top 5 Negara Asal")
         st.bar_chart(data['Country'].value_counts().head(5))
+        st.bar_chart(country_counts)
+
+        # --- FITUR BARU: GRAFIK TREN WAKTU ---
+        st.subheader("📈 Tren Serangan Masuk")
+        if 'Waktu' in data.columns and not data['Waktu'].isnull().all():
+            df_waktu = data.dropna(subset=['Waktu']).copy()
+            df_waktu['Waktu'] = pd.to_datetime(df_waktu['Waktu'])
+            
+            df_waktu['Jam_Menit'] = df_waktu['Waktu'].dt.strftime('%H:%M')
+            tren_serangan = df_waktu.groupby('Jam_Menit').size()
+            
+            st.line_chart(tren_serangan)
+        else:
+            st.info("Belum ada data waktu yang cukup untuk membuat grafik.")
 else:
     st.info("Menunggu data masuk dari sensor lokal ke Cloud Database...")
 
