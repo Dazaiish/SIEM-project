@@ -44,7 +44,7 @@ if not data.empty and 'IP' in data.columns:
     
     with right_col:
         st.subheader("🌍 Top 5 Negara Asal")
-        st.bar_chart(data['Country'].value_counts().head(5))
+        country_counts = data['Country'].value_counts().head(5) 
         st.bar_chart(country_counts)
 
         # --- FITUR BARU: GRAFIK TREN WAKTU ---
